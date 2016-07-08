@@ -1,0 +1,28 @@
+{
+  "name": "vue-webpack-basic",
+  "version": "1.0.0",
+  "description": "vue 和webpack 整合起来的前端手脚架",
+  "main": "entry.js",
+  "dependencies": {
+    "webpack": "^1.13.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevin1220/vue-webpackage_basic.git"
+  },
+  "keywords": [
+    "vue",
+    "webpack",
+    "前端手脚架"
+  ],
+  "author": "Kevin.Liang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevin1220/vue-webpackage_basic/issues"
+  },
+  "homepage": "https://github.com/kevin1220/vue-webpackage_basic#readme"
+}
