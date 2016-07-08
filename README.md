@@ -1,2 +1,2 @@
-# vue-webpackage_basic
-vue+webpackage的开发环境
+# vue-webpack_basic
+vue+webpack的开发环境
