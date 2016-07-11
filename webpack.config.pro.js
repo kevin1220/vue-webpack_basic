@@ -1,6 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
-var appname = "dev";
+var appname = "app";
 //加载一些插件 
 var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');

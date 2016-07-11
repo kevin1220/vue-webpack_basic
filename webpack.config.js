@@ -1,6 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
-
+var appname = "dev";
 //加载一些插件 
 var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -12,10 +12,14 @@ var SRC_PATH = path.resolve(ROOT_PATH, 'src');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 
 module.exports = {
-    entry: [SRC_PATH + "/js/main"],
+    entry: [
+        SRC_PATH + "/js/main",
+        'webpack-dev-server/client?http://127.0.0.1:3000',
+        'webpack/hot/dev-server',
+    ],
     output: {
-        path: BUILD_PATH + "/dev",
-        publicPath:BUILD_PATH+"/dev",
+        path: BUILD_PATH + "/"+appname,
+        publicPath: BUILD_PATH + "/"+appname,
         filename: "js/[name].js",
     },
     module: {
@@ -42,9 +46,14 @@ module.exports = {
         //添加我们的插件 会自动生成一个html文件
         new HtmlwebpackPlugin({
             filename: 'index.html',
-            template: SRC_PATH+'/html/index.html',
+            template: SRC_PATH + '/html/index.html',
             inject: 'head',
             hash: true,
         })
-    ]
+    ],
+    devServer: {
+        contentBase: 'build/',
+        hot: true,
+        port:3000
+    }
 };

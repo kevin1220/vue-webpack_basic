@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/Users/kevin/projects/gitproject/vue-webpack_basic/build/dev";
+/******/ 	__webpack_require__.p = "/Users/kevin/projects/gitproject/vue-webpack_basic/build/app";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
