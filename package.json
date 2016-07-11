@@ -8,9 +8,12 @@
     "webpack": "^1.13.1",
     "html-webpack-plugin": "^2.19.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "url-loader": "^0.5.7",
+    "webpack-dev-server": "^1.14.1"
+  },
   "scripts": {
-    "dev": "webpack --config webpack.config.js",
+    "dev": "webpack-dev-server --config webpack.config.dev.js",
     "pro": "webpack --config webpack.config.app.js"
   },
   "repository": {

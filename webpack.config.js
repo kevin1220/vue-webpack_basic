@@ -1,16 +1,30 @@
 var webpack = require('webpack');
+var path = require('path');
+
+//加载一些插件 
 var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
+
+//定义了一些文件夹的路径
+var ROOT_PATH = path.resolve(__dirname);
+var SRC_PATH = path.resolve(ROOT_PATH, 'src');
+var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
+
 module.exports = {
-    entry: "./src/js/main",
+    entry: [SRC_PATH + "/js/main"],
     output: {
-        path: "./dev",
+        path: BUILD_PATH + "/dev",
+        publicPath:BUILD_PATH+"/dev",
         filename: "js/[name].js",
     },
     module: {
-        loaders: [
-            { test: /\.css$/, loader: "style!css" },
+        loaders: [{
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract(
+                    'css?sourceMap?style'
+                )
+            },
             { test: /.(png|jpg)$/, loader: 'url-loader?limit=8192' }
         ]
     },
@@ -18,7 +32,7 @@ module.exports = {
         extensions: ['', '.js', '.css'],
     },
     plugins: [
-        // new ExtractTextPlugin("index.css"),
+        new ExtractTextPlugin("css/index.css"),
         new webpack.optimize.UglifyJsPlugin({ //压缩代码
             compress: {
                 warnings: false
@@ -27,11 +41,10 @@ module.exports = {
         }),
         //添加我们的插件 会自动生成一个html文件
         new HtmlwebpackPlugin({
-            title: 'Hello World app',
             filename: 'index.html',
-            template: 'index.html',
-            inject: true,
-            hash: true
+            template: SRC_PATH+'/html/index.html',
+            inject: 'head',
+            hash: true,
         })
     ]
 };
