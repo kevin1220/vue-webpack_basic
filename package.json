@@ -4,11 +4,14 @@
   "description": "vue 和webpack 整合起来的前端手脚架",
   "main": "entry.js",
   "dependencies": {
-    "webpack": "^1.13.1"
+    "extract-text-webpack-plugin": "^1.0.1",
+    "webpack": "^1.13.1",
+    "html-webpack-plugin": "^2.19.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "release"
+    "dev": "webpack --config webpack.config.js",
+    "pro": "webpack --config webpack.config.app.js"
   },
   "repository": {
     "type": "git",
