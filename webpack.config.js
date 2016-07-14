@@ -21,6 +21,7 @@ module.exports = {
         path: BUILD_PATH + "/"+appname,
         publicPath: BUILD_PATH + "/"+appname,
         filename: "js/[name].js",
+        chunkFilename:"js/[name].min.js"
     },
     module: {
         loaders: [{
