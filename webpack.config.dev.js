@@ -12,6 +12,7 @@ var SRC_PATH = path.resolve(ROOT_PATH, 'src');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 
 module.exports = {
+    devtool:"source-map",
     entry: [
         SRC_PATH + "/js/main"
     ],
