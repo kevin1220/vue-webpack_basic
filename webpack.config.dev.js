@@ -12,15 +12,15 @@ var SRC_PATH = path.resolve(ROOT_PATH, 'src');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 
 module.exports = {
-    devtool:"source-map",
+    devtool: "source-map",
     entry: [
         SRC_PATH + "/js/main"
     ],
     output: {
-        path: BUILD_PATH + "/"+appname,
-        publicPath: BUILD_PATH + "/"+appname,
+        path: BUILD_PATH + "/" + appname,
+        publicPath: BUILD_PATH + "/" + appname,
         filename: "js/[name].js",
-        chunkFilename:"js/[name].min.js"
+        chunkFilename: "js/[name].min.js"
     },
     module: {
         loaders: [{
@@ -37,12 +37,24 @@ module.exports = {
     },
     plugins: [
         new ExtractTextPlugin("css/index.css"),
+        new webpack.optimize.UglifyJsPlugin({ //压缩代码
+            compress: {
+                warnings: false
+            },
+            except: ['$super', '$', 'exports', 'require'] //排除关键字
+        }),
         //添加我们的插件 会自动生成一个html文件
         new HtmlwebpackPlugin({
             filename: 'index.html',
             template: SRC_PATH + '/html/index.html',
             inject: true,
             hash: true,
-        })
+        }),
+        // new webpack.optimize.UglifyJsPlugin({ //压缩代码
+        //     compress: {
+        //         warnings: false
+        //     },
+        //     except: ['$super', '$', 'exports', 'require'] //排除关键字
+        // })
     ],
 };

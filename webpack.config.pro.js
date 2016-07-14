@@ -36,6 +36,12 @@ module.exports = {
     },
     plugins: [
         new ExtractTextPlugin("css/index.css"),
+        new webpack.optimize.UglifyJsPlugin({ //压缩代码
+            compress: {
+                warnings: false
+            },
+            except: ['$super', '$', 'exports', 'require'] //排除关键字
+        }),
         //添加我们的插件 会自动生成一个html文件
         new HtmlwebpackPlugin({
             filename: 'index.html',
